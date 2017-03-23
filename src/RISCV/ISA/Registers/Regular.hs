@@ -67,7 +67,7 @@ data Reg =
   | T4
   | T5
   | T6
-    deriving (Eq, Ord)
+    deriving (Eq, Ord, Show)
 
 instance Enum Reg where
   fromEnum ZERO = 0x00
