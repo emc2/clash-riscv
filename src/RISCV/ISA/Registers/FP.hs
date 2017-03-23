@@ -27,119 +27,119 @@
 {-# OPTIONS_GHC -Wall -Werror #-}
 {-# LANGUAGE DataKinds, TypeFamilies #-}
 
-module RISCV.ISA.Registers.Regular(
-       Reg(..)
+module RISCV.ISA.Registers.FP(
+       FPReg(..)
        ) where
 
 import Prelude
 import CLaSH.Class.BitPack
 
--- | Regular RISC-V registers (ie. those provided by the I-instruction set)
-data Reg =
-    ZERO
-  | RA
-  | SP
-  | GP
-  | TP
-  | T0
-  | T1
-  | T2
-  | FP
-  | S1
-  | A0
-  | A1
-  | A2
-  | A3
-  | A4
-  | A5
-  | A6
-  | A7
-  | S2
-  | S3
-  | S4
-  | S5
-  | S6
-  | S7
-  | S8
-  | S9
-  | S10
-  | S11
-  | T3
-  | T4
-  | T5
-  | T6
+-- | RISC-V floating-point registers.
+data FPReg =
+    FT0
+  | FT1
+  | FT2
+  | FT3
+  | FT4
+  | FT5
+  | FT6
+  | FT7
+  | FS0
+  | FS1
+  | FA0
+  | FA1
+  | FA2
+  | FA3
+  | FA4
+  | FA5
+  | FA6
+  | FA7
+  | FS2
+  | FS3
+  | FS4
+  | FS5
+  | FS6
+  | FS7
+  | FS8
+  | FS9
+  | FS10
+  | FS11
+  | FT8
+  | FT9
+  | FT10
+  | FT11
     deriving (Eq, Ord, Show)
 
-instance Enum Reg where
-  fromEnum ZERO = 0x00
-  fromEnum RA = 0x01
-  fromEnum SP = 0x02
-  fromEnum GP = 0x03
-  fromEnum TP = 0x04
-  fromEnum T0 = 0x05
-  fromEnum T1 = 0x06
-  fromEnum T2 = 0x07
-  fromEnum FP = 0x08
-  fromEnum S1 = 0x09
-  fromEnum A0 = 0x0a
-  fromEnum A1 = 0x0b
-  fromEnum A2 = 0x0c
-  fromEnum A3 = 0x0d
-  fromEnum A4 = 0x0e
-  fromEnum A5 = 0x0f
-  fromEnum A6 = 0x10
-  fromEnum A7 = 0x11
-  fromEnum S2 = 0x12
-  fromEnum S3 = 0x13
-  fromEnum S4 = 0x14
-  fromEnum S5 = 0x15
-  fromEnum S6 = 0x16
-  fromEnum S7 = 0x17
-  fromEnum S8 = 0x18
-  fromEnum S9 = 0x19
-  fromEnum S10 = 0x1a
-  fromEnum S11 = 0x1b
-  fromEnum T3 = 0x1c
-  fromEnum T4 = 0x1d
-  fromEnum T5 = 0x1e
-  fromEnum T6 = 0x1f
+instance Enum FPReg where
+  fromEnum FT0 = 0x00
+  fromEnum FT1 = 0x01
+  fromEnum FT2 = 0x02
+  fromEnum FT3 = 0x03
+  fromEnum FT4 = 0x04
+  fromEnum FT5 = 0x05
+  fromEnum FT6 = 0x06
+  fromEnum FT7 = 0x07
+  fromEnum FS0 = 0x08
+  fromEnum FS1 = 0x09
+  fromEnum FA0 = 0x0a
+  fromEnum FA1 = 0x0b
+  fromEnum FA2 = 0x0c
+  fromEnum FA3 = 0x0d
+  fromEnum FA4 = 0x0e
+  fromEnum FA5 = 0x0f
+  fromEnum FA6 = 0x10
+  fromEnum FA7 = 0x11
+  fromEnum FS2 = 0x12
+  fromEnum FS3 = 0x13
+  fromEnum FS4 = 0x14
+  fromEnum FS5 = 0x15
+  fromEnum FS6 = 0x16
+  fromEnum FS7 = 0x17
+  fromEnum FS8 = 0x18
+  fromEnum FS9 = 0x19
+  fromEnum FS10 = 0x1a
+  fromEnum FS11 = 0x1b
+  fromEnum FT8 = 0x1c
+  fromEnum FT9 = 0x1d
+  fromEnum FT10 = 0x1e
+  fromEnum FT11 = 0x1f
 
-  toEnum 0x00 = ZERO
-  toEnum 0x01 = RA
-  toEnum 0x02 = SP
-  toEnum 0x03 = GP
-  toEnum 0x04 = TP
-  toEnum 0x05 = T0
-  toEnum 0x06 = T1
-  toEnum 0x07 = T2
-  toEnum 0x08 = FP
-  toEnum 0x09 = S1
-  toEnum 0x0a = A0
-  toEnum 0x0b = A1
-  toEnum 0x0c = A2
-  toEnum 0x0d = A3
-  toEnum 0x0e = A4
-  toEnum 0x0f = A5
-  toEnum 0x10 = A6
-  toEnum 0x11 = A7
-  toEnum 0x12 = S2
-  toEnum 0x13 = S3
-  toEnum 0x14 = S4
-  toEnum 0x15 = S5
-  toEnum 0x16 = S6
-  toEnum 0x17 = S7
-  toEnum 0x18 = S8
-  toEnum 0x19 = S9
-  toEnum 0x1a = S10
-  toEnum 0x1b = S11
-  toEnum 0x1c = T3
-  toEnum 0x1d = T4
-  toEnum 0x1e = T5
-  toEnum 0x1f = T6
+  toEnum 0x00 = FT0
+  toEnum 0x01 = FT1
+  toEnum 0x02 = FT2
+  toEnum 0x03 = FT3
+  toEnum 0x04 = FT4
+  toEnum 0x05 = FT5
+  toEnum 0x06 = FT6
+  toEnum 0x07 = FT7
+  toEnum 0x08 = FS0
+  toEnum 0x09 = FS1
+  toEnum 0x0a = FA0
+  toEnum 0x0b = FA1
+  toEnum 0x0c = FA2
+  toEnum 0x0d = FA3
+  toEnum 0x0e = FA4
+  toEnum 0x0f = FA5
+  toEnum 0x10 = FA6
+  toEnum 0x11 = FA7
+  toEnum 0x12 = FS2
+  toEnum 0x13 = FS3
+  toEnum 0x14 = FS4
+  toEnum 0x15 = FS5
+  toEnum 0x16 = FS6
+  toEnum 0x17 = FS7
+  toEnum 0x18 = FS8
+  toEnum 0x19 = FS9
+  toEnum 0x1a = FS10
+  toEnum 0x1b = FS11
+  toEnum 0x1c = FT8
+  toEnum 0x1d = FT9
+  toEnum 0x1e = FT10
+  toEnum 0x1f = FT11
   toEnum _ = error "Invalid register ID"
 
-instance BitPack Reg where
-  type BitSize Reg = 5
+instance BitPack FPReg where
+  type BitSize FPReg = 5
 
   pack = toEnum . fromEnum
   unpack = toEnum . fromEnum
