@@ -1,0 +1,25 @@
+Name:                   clash-riscv
+Category:               Testing, Test
+Version:                0.0.0
+License:                BSD3
+License-File:           LICENSE
+Author:                 Eric McCorkle
+Maintainer:             Eric McCorkle <emc2@metricspace.net>
+Stability:              Stable
+Synopsis:               A library of components for RISC-V implementations in Haskell CLaSH.
+Homepage:               https://github.com/emc2/clash-riscv
+Bug-Reports:            https://github.com/emc2/clash-riscv/issues
+Copyright:              Copyright (c) 2017 Eric McCorkle.  All rights reserved.
+Build-type:             Simple
+Cabal-version:          >= 1.16
+
+Source-Repository head
+  Type: git
+  Location: git@github.com:emc2/clash-riscv.git
+
+Library
+  default-language:     Haskell2010
+  hs-source-dirs:       src
+  build-depends:        clash-prelude
+  exposed-modules:      
+
