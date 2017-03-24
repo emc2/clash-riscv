@@ -27,14 +27,14 @@
 {-# OPTIONS_GHC -Wall -Werror #-}
 {-# LANGUAGE DataKinds, TypeFamilies #-}
 
-module RISCV.ISA.Opcode(
-       Opcode(..)
+module RISCV.ISA.Opcodes.Opcode32(
+       Opcode32(..)
        ) where
 
 import Prelude
 import CLaSH.Class.BitPack
 
-data Opcode =
+data Opcode32 =
     LOAD
   | LOAD_FP
   | CUSTOM_0
@@ -65,8 +65,8 @@ data Opcode =
   | CUSTOM_3
     deriving (Eq, Ord)
 
-instance BitPack Opcode where
-  type BitSize Opcode = 5
+instance BitPack Opcode32 where
+  type BitSize Opcode32 = 5
 
   pack LOAD = 0b00000
   pack LOAD_FP = 0b00001
